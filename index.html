@@ -1,0 +1,493 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"/&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/&gt;</p>
+<p class="p1">&lt;meta name="apple-mobile-web-app-capable" content="yes"/&gt;</p>
+<p class="p1">&lt;meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/&gt;</p>
+<p class="p1">&lt;meta name="apple-mobile-web-app-title" content="Cade OS"/&gt;</p>
+<p class="p1">&lt;title&gt;Cade OS&lt;/title&gt;</p>
+<p class="p1">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1">*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}</p>
+<p class="p1">:root{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--a:#534AB7;--as:#EEEDFE;--am:#7F77DD;--ad:#3C3489;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--g:#0F6E56;--gs:#E1F5EE;--r:#993C1D;--rs:#FAECE7;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--ab:#854F0B;--abs:#FAEEDA;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--bg:#f7f7f5;--card:#ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--t1:#1a1a1a;--t2:#666;--t3:#aaa;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--br:rgba(0,0,0,0.09);--br2:rgba(0,0,0,0.15);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--nav-h:72px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--safe-bottom:env(safe-area-inset-bottom,0px);</p>
+<p class="p1">}</p>
+<p class="p1">@media(prefers-color-scheme:dark){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--bg:#161616;--card:#222;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--t1:#f0f0f0;--t2:#888;--t3:#555;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--br:rgba(255,255,255,0.09);--br2:rgba(255,255,255,0.18);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--as:#2a2660;--ad:#AFA9EC;--gs:#0a2e22;--rs:#2e150d;--abs:#2e1f05;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p1">html,body{height:100%;overflow:hidden;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;color:var(--t1)}</p>
+<p class="p2"><br></p>
+<p class="p1">#app{display:flex;flex-direction:column;height:100%;max-width:430px;margin:0 auto;position:relative}</p>
+<p class="p2"><br></p>
+<p class="p1">#topbar{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding:52px 18px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>border-bottom:0.5px solid var(--br);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>flex-shrink:0;</p>
+<p class="p1">}</p>
+<p class="p1">.tb-inner{display:flex;align-items:center;justify-content:space-between}</p>
+<p class="p1">.tb-logo{display:flex;align-items:center;gap:7px}</p>
+<p class="p1">.tb-dot{width:7px;height:7px;border-radius:50%;background:var(--am)}</p>
+<p class="p1">.tb-name{font-size:15px;font-weight:600;letter-spacing:0.05em;color:var(--t1)}</p>
+<p class="p1">.tb-right{display:flex;align-items:center;gap:8px}</p>
+<p class="p1">.tb-badge{font-size:10px;padding:3px 9px;border-radius:20px;background:var(--as);color:var(--ad);font-weight:500}</p>
+<p class="p1">.tb-date{font-size:11px;color:var(--t2)}</p>
+<p class="p2"><br></p>
+<p class="p1">#scroll{flex:1;overflow-y:auto;padding:16px 16px 0;-webkit-overflow-scrolling:touch}</p>
+<p class="p1">#scroll::-webkit-scrollbar{display:none}</p>
+<p class="p2"><br></p>
+<p class="p1">#navbar{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>height:var(--nav-h);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding-bottom:var(--safe-bottom);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>border-top:0.5px solid var(--br);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>flex-shrink:0;</p>
+<p class="p1">}</p>
+<p class="p1">.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:8px 0}</p>
+<p class="p1">.tab i{font-size:22px;color:var(--t3);transition:color 0.15s}</p>
+<p class="p1">.tab span{font-size:9px;color:var(--t3);transition:color 0.15s;font-weight:500}</p>
+<p class="p1">.tab.on i,.tab.on span{color:var(--a)}</p>
+<p class="p2"><br></p>
+<p class="p1">.pg{display:none}.pg.show{display:block}</p>
+<p class="p2"><br></p>
+<p class="p1">.kpi2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:16px}</p>
+<p class="p1">.kpi{background:var(--card);border:0.5px solid var(--br);border-radius:12px;padding:12px 14px}</p>
+<p class="p1">.kl{font-size:10px;color:var(--t2);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px}</p>
+<p class="p1">.kv{font-size:20px;font-weight:500;color:var(--t1);line-height:1}</p>
+<p class="p1">.ks{font-size:10px;margin-top:3px}</p>
+<p class="p1">.up{color:var(--g)}.dn{color:var(--r)}</p>
+<p class="p2"><br></p>
+<p class="p1">.sh{font-size:10px;font-weight:500;color:var(--t2);text-transform:uppercase;letter-spacing:0.07em;margin:0 0 8px}</p>
+<p class="p1">.card{background:var(--card);border:0.5px solid var(--br);border-radius:14px;padding:14px 16px;margin-bottom:14px}</p>
+<p class="p2"><br></p>
+<p class="p1">.row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:0.5px solid var(--br);font-size:13px}</p>
+<p class="p1">.row:last-child{border-bottom:none}</p>
+<p class="p1">.rl{color:var(--t2)}</p>
+<p class="p2"><br></p>
+<p class="p1">.pbar{height:3px;background:var(--bg);border-radius:3px;margin-top:5px}</p>
+<p class="p1">.pfill{height:100%;border-radius:3px;background:var(--am)}</p>
+<p class="p2"><br></p>
+<p class="p1">.check-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--br);font-size:13px;min-height:44px}</p>
+<p class="p1">.check-row:last-child{border-bottom:none}</p>
+<p class="p1">.check-row.done span{color:var(--t3);text-decoration:line-through}</p>
+<p class="p2"><br></p>
+<p class="p1">.acct-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}</p>
+<p class="p1">.acct-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}</p>
+<p class="p1">.acct-info{flex:1}</p>
+<p class="p1">.acct-name{font-size:13px;font-weight:500;color:var(--t1)}</p>
+<p class="p1">.acct-type{font-size:11px;color:var(--t2)}</p>
+<p class="p1">.acct-bal{text-align:right}</p>
+<p class="p1">.acct-amt{font-size:20px;font-weight:500;color:var(--t1)}</p>
+<p class="p1">.acct-sub{font-size:10px;color:var(--t2)}</p>
+<p class="p1">.divider{height:0.5px;background:var(--br);margin-bottom:10px}</p>
+<p class="p2"><br></p>
+<p class="p1">.xrp-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}</p>
+<p class="p1">.xrp-badge{font-size:10px;font-weight:500;padding:3px 8px;border-radius:20px;background:var(--as);color:var(--ad);display:inline-block;margin-bottom:4px}</p>
+<p class="p1">.xrp-price{font-size:26px;font-weight:500;color:var(--t1)}</p>
+<p class="p1">.xrp-hint{font-size:10px;color:var(--t2);margin-top:2px}</p>
+<p class="p1">.chg{font-size:12px;font-weight:500;padding:3px 10px;border-radius:20px}</p>
+<p class="p1">.chg-u{background:var(--gs);color:var(--g)}.chg-d{background:var(--rs);color:var(--r)}</p>
+<p class="p1">.xgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}</p>
+<p class="p1">.xs{background:var(--bg);border-radius:10px;padding:10px 12px}</p>
+<p class="p1">.xsl{font-size:9px;color:var(--t2);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}</p>
+<p class="p1">.xsv{font-size:14px;font-weight:500;color:var(--t1)}</p>
+<p class="p1">.spark{display:flex;align-items:flex-end;gap:3px;height:36px;margin-top:12px}</p>
+<p class="p1">.sb{flex:1;border-radius:2px 2px 0 0;background:var(--am);opacity:0.5}</p>
+<p class="p1">.sb.pk{opacity:1}</p>
+<p class="p2"><br></p>
+<p class="p1">.chat-list{display:flex;flex-direction:column;gap:10px;padding-bottom:12px}</p>
+<p class="p1">.msg{display:flex;flex-direction:column;gap:2px}</p>
+<p class="p1">.msg.u{align-items:flex-end}</p>
+<p class="p1">.msg.b{align-items:flex-start}</p>
+<p class="p1">.bubble{max-width:80%;padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.5}</p>
+<p class="p1">.msg.b .bubble{background:var(--card);color:var(--t1);border-bottom-left-radius:4px;border:0.5px solid var(--br)}</p>
+<p class="p1">.msg.u .bubble{background:var(--a);color:#fff;border-bottom-right-radius:4px}</p>
+<p class="p1">.msg-t{font-size:10px;color:var(--t3);padding:0 4px}</p>
+<p class="p1">.dots{display:flex;gap:4px;padding:10px 14px;background:var(--card);border:0.5px solid var(--br);border-radius:18px;border-bottom-left-radius:4px;width:50px}</p>
+<p class="p1">.dot{width:6px;height:6px;border-radius:50%;background:var(--t3);animation:bop 1.2s infinite}</p>
+<p class="p1">.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}</p>
+<p class="p1">@keyframes bop{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}</p>
+<p class="p2"><br></p>
+<p class="p1">#chat-bar{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>display:flex;gap:10px;padding:10px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>padding-bottom:calc(10px + var(--safe-bottom));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>background:var(--card);border-top:0.5px solid var(--br);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>flex-shrink:0;</p>
+<p class="p1">}</p>
+<p class="p1">#chat-bar input{flex:1;font-size:14px;padding:10px 16px;border-radius:24px;border:0.5px solid var(--br2);background:var(--bg);color:var(--t1);outline:none;-webkit-appearance:none;font-family:inherit}</p>
+<p class="p1">#chat-bar input:focus{border-color:var(--am)}</p>
+<p class="p1">.send-btn{width:40px;height:40px;border-radius:50%;background:var(--a);border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer}</p>
+<p class="p1">.send-btn i{font-size:17px;color:#fff}</p>
+<p class="p2"><br></p>
+<p class="p1">.lift-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--br);min-height:44px}</p>
+<p class="p1">.lift-row:last-child{border-bottom:none}</p>
+<p class="p1">.lift-num{width:24px;height:24px;border-radius:50%;background:var(--as);color:var(--ad);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}</p>
+<p class="p1">.lift-name{font-size:13px;font-weight:500;color:var(--t1)}</p>
+<p class="p1">.lift-sets{font-size:11px;color:var(--t2);margin-top:2px}</p>
+<p class="p1">.tag{font-size:10px;padding:3px 9px;border-radius:20px;font-weight:500;white-space:nowrap}</p>
+<p class="p1">.tg{background:var(--gs);color:var(--g)}.ta{background:var(--abs);color:var(--ab)}</p>
+<p class="p2"><br></p>
+<p class="p1">.bar-chart{display:flex;align-items:flex-end;gap:6px;height:80px}</p>
+<p class="p1">.bar{flex:1;border-radius:3px 3px 0 0}</p>
+<p class="p1">.bar-lbl{font-size:9px;color:var(--t2);text-align:center;margin-top:5px}</p>
+<p class="p2"><br></p>
+<p class="p1">.more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}</p>
+<p class="p1">.more-btn{background:var(--card);border:0.5px solid var(--br);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;cursor:pointer;min-height:80px}</p>
+<p class="p1">.more-btn i{font-size:24px;color:var(--am)}</p>
+<p class="p1">.more-btn span{font-size:13px;font-weight:500;color:var(--t1)}</p>
+<p class="p1">.more-btn small{font-size:11px;color:var(--t2)}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;div id="app"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="topbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tb-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="tb-logo"&gt;&lt;div class="tb-dot"&gt;&lt;/div&gt;&lt;div class="tb-name"&gt;CADE OS&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="tb-right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="tb-badge" id="rec-badge"&gt;Recovery 82%&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="tb-date" id="tb-date"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="scroll"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- DASHBOARD --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="pg-dash" class="pg show"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="kpi2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Net worth&lt;/div&gt;&lt;div class="kv"&gt;$24,200&lt;/div&gt;&lt;div class="ks up"&gt;+$400 this month&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;XRP value&lt;/div&gt;&lt;div class="kv" id="dash-xrp"&gt;—&lt;/div&gt;&lt;div class="ks" id="dash-xrp-s"&gt;loading...&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Sleep&lt;/div&gt;&lt;div class="kv"&gt;7.4h&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;87% efficiency&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Lifts today&lt;/div&gt;&lt;div class="kv"&gt;2&lt;span style="font-size:13px;color:var(--t2)"&gt;/4&lt;/span&gt;&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;2 remaining&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sh"&gt;Today's focus&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="check-row done"&gt;&lt;i class="ti ti-circle-check" style="color:var(--g);font-size:20px;flex-shrink:0" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Morning lift — upper push&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="check-row done"&gt;&lt;i class="ti ti-circle-check" style="color:var(--g);font-size:20px;flex-shrink:0" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Reply to Dustin re: Plum Jack&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="check-row"&gt;&lt;i class="ti ti-circle-dashed" style="color:var(--t3);font-size:20px;flex-shrink:0" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Afternoon lift — lower body&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="check-row"&gt;&lt;i class="ti ti-circle-dashed" style="color:var(--t3);font-size:20px;flex-shrink:0" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Upload WHOOP CSV&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="check-row"&gt;&lt;i class="ti ti-circle-dashed" style="color:var(--t3);font-size:20px;flex-shrink:0" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Write journal entry&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sh"&gt;Venture — Plum Jack&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="margin-bottom:12px"&gt;&lt;div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"&gt;&lt;span&gt;Manufacturing partner&lt;/span&gt;&lt;span style="color:var(--t2)"&gt;40%&lt;/span&gt;&lt;/div&gt;&lt;div class="pbar"&gt;&lt;div class="pfill" style="width:40%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="margin-bottom:12px"&gt;&lt;div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"&gt;&lt;span&gt;Demo video&lt;/span&gt;&lt;span style="color:var(--t2)"&gt;15%&lt;/span&gt;&lt;/div&gt;&lt;div class="pbar"&gt;&lt;div class="pfill" style="width:15%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="margin-bottom:12px"&gt;&lt;div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"&gt;&lt;span&gt;Website &amp; sell sheet&lt;/span&gt;&lt;span style="color:var(--t2)"&gt;30%&lt;/span&gt;&lt;/div&gt;&lt;div class="pbar"&gt;&lt;div class="pfill" style="width:30%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;&lt;div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"&gt;&lt;span&gt;Lead pipeline&lt;/span&gt;&lt;span style="color:var(--t2)"&gt;10%&lt;/span&gt;&lt;/div&gt;&lt;div class="pbar"&gt;&lt;div class="pfill" style="width:10%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="height:16px"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- AGENT --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="pg-agent" class="pg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chat-list" id="chat-msgs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="msg b"&gt;&lt;div class="bubble"&gt;Hey Cade — I know your health, finances, and goals. What do you need?&lt;/div&gt;&lt;div class="msg-t"&gt;Now&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- FINANCE --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="pg-finance" class="pg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="kpi2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Net worth&lt;/div&gt;&lt;div class="kv"&gt;$24,200&lt;/div&gt;&lt;div class="ks up"&gt;+$400 mo&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Savings rate&lt;/div&gt;&lt;div class="kv"&gt;28%&lt;/div&gt;&lt;div class="ks up"&gt;Target 25%&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sh"&gt;First Bank — checking&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="acct-head"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="acct-ico" style="background:#E6F1FB;color:#0C447C"&gt;FB&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="acct-info"&gt;&lt;div class="acct-name"&gt;First Bank&lt;/div&gt;&lt;div class="acct-type"&gt;Checking ···· 4821&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="acct-bal"&gt;&lt;div class="acct-amt"&gt;$6,340&lt;/div&gt;&lt;div class="acct-sub"&gt;Available&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="divider"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Direct deposit&lt;/span&gt;&lt;span class="up" style="font-weight:500"&gt;+$5,200&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Rent&lt;/span&gt;&lt;span class="dn"&gt;-$1,400&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Groceries&lt;/span&gt;&lt;span class="dn"&gt;-$214&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Transfer to Chase&lt;/span&gt;&lt;span class="dn"&gt;-$1,000&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sh"&gt;Chase — savings&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="acct-head"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="acct-ico" style="background:#FAEEDA;color:#633806"&gt;CH&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="acct-info"&gt;&lt;div class="acct-name"&gt;Chase Bank&lt;/div&gt;&lt;div class="acct-type"&gt;Savings ···· 9203&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="acct-bal"&gt;&lt;div class="acct-amt"&gt;$12,150&lt;/div&gt;&lt;div class="acct-sub"&gt;Available&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="divider"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Transfer from First Bank&lt;/span&gt;&lt;span class="up" style="font-weight:500"&gt;+$1,000&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Interest earned&lt;/span&gt;&lt;span class="up" style="font-weight:500"&gt;+$42&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;APY&lt;/span&gt;&lt;span style="font-weight:500"&gt;4.50%&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sh"&gt;XRP — crypto&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="xrp-top"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="xrp-badge"&gt;XRP / USD&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="xrp-price" id="xrp-price"&gt;—&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="xrp-hint"&gt;Live price · Coinbase&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div id="xrp-chg" class="chg chg-u"&gt;—&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="xgrid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="xs"&gt;&lt;div class="xsl"&gt;Holdings&lt;/div&gt;&lt;div class="xsv"&gt;2,500 XRP&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="xs"&gt;&lt;div class="xsl"&gt;Current value&lt;/div&gt;&lt;div class="xsv up" id="xrp-val"&gt;—&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="xs"&gt;&lt;div class="xsl"&gt;Cost basis&lt;/div&gt;&lt;div class="xsv"&gt;$1,250&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="xs"&gt;&lt;div class="xsl"&gt;Total return&lt;/div&gt;&lt;div class="xsv" id="xrp-ret"&gt;—&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="xs"&gt;&lt;div class="xsl"&gt;Avg cost&lt;/div&gt;&lt;div class="xsv"&gt;$0.50&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="xs"&gt;&lt;div class="xsl"&gt;Return %&lt;/div&gt;&lt;div class="xsv" id="xrp-pct"&gt;—&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="spark" id="spark"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="height:16px"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- HEALTH --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="pg-health" class="pg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="kpi2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Recovery&lt;/div&gt;&lt;div class="kv up"&gt;82%&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;Good · today&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;HRV&lt;/div&gt;&lt;div class="kv"&gt;68ms&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;Above baseline&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Sleep&lt;/div&gt;&lt;div class="kv"&gt;7.4h&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;87% efficiency&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Strain&lt;/div&gt;&lt;div class="kv"&gt;16.2&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;High exertion&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:12px"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;&lt;div style="font-size:13px;font-weight:500"&gt;Upload WHOOP export&lt;/div&gt;&lt;div style="font-size:11px;color:var(--t2);margin-top:3px"&gt;Profile → Export data → CSV&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button style="font-size:12px;padding:8px 14px;border-radius:20px;border:0.5px solid var(--br2);background:transparent;color:var(--t1);white-space:nowrap;font-family:inherit"&gt;&lt;i class="ti ti-upload" style="font-size:13px;margin-right:4px" aria-hidden="true"&gt;&lt;/i&gt;Upload&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sh"&gt;7-day recovery&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bar-chart"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="flex:1;display:flex;flex-direction:column;align-items:center"&gt;&lt;div class="bar" style="width:100%;height:68%;background:#D85A30"&gt;&lt;/div&gt;&lt;div class="bar-lbl"&gt;M&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="flex:1;display:flex;flex-direction:column;align-items:center"&gt;&lt;div class="bar" style="width:100%;height:72%;background:#EF9F27"&gt;&lt;/div&gt;&lt;div class="bar-lbl"&gt;T&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="flex:1;display:flex;flex-direction:column;align-items:center"&gt;&lt;div class="bar" style="width:100%;height:85%;background:#1D9E75"&gt;&lt;/div&gt;&lt;div class="bar-lbl"&gt;W&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="flex:1;display:flex;flex-direction:column;align-items:center"&gt;&lt;div class="bar" style="width:100%;height:79%;background:#EF9F27"&gt;&lt;/div&gt;&lt;div class="bar-lbl"&gt;T&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="flex:1;display:flex;flex-direction:column;align-items:center"&gt;&lt;div class="bar" style="width:100%;height:91%;background:#1D9E75"&gt;&lt;/div&gt;&lt;div class="bar-lbl"&gt;F&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="flex:1;display:flex;flex-direction:column;align-items:center"&gt;&lt;div class="bar" style="width:100%;height:77%;background:#EF9F27"&gt;&lt;/div&gt;&lt;div class="bar-lbl"&gt;S&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="flex:1;display:flex;flex-direction:column;align-items:center"&gt;&lt;div class="bar" style="width:100%;height:82%;background:#1D9E75"&gt;&lt;/div&gt;&lt;div class="bar-lbl"&gt;S&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sh"&gt;Last night&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Total sleep&lt;/span&gt;&lt;span style="font-weight:500"&gt;7h 24m&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;REM&lt;/span&gt;&lt;span style="font-weight:500"&gt;1h 52m&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Deep (SWS)&lt;/span&gt;&lt;span style="font-weight:500"&gt;1h 18m&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Awake&lt;/span&gt;&lt;span style="font-weight:500"&gt;22m&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Respiratory rate&lt;/span&gt;&lt;span style="font-weight:500"&gt;16.2 rpm&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="height:16px"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- MORE --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="pg-more" class="pg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="more-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="more-btn" onclick="showSub('fitness')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;i class="ti ti-barbell" aria-hidden="true"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;&lt;span&gt;Fitness log&lt;/span&gt;&lt;br&gt;&lt;small&gt;4 sessions today&lt;/small&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="more-btn" onclick="showSub('journal')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;i class="ti ti-notebook" aria-hidden="true"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;&lt;span&gt;Journal&lt;/span&gt;&lt;br&gt;&lt;small&gt;Write today's entry&lt;/small&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="more-btn" onclick="showSub('venture')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;i class="ti ti-rocket" aria-hidden="true"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;&lt;span&gt;Venture&lt;/span&gt;&lt;br&gt;&lt;small&gt;Plum Jack progress&lt;/small&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="more-btn" onclick="showSub('career')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;i class="ti ti-briefcase" aria-hidden="true"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;&lt;span&gt;Career&lt;/span&gt;&lt;br&gt;&lt;small&gt;Day 12 at new job&lt;/small&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="sub-fitness" style="display:none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sh"&gt;Today — 4 sessions&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="lift-row"&gt;&lt;div class="lift-num"&gt;1&lt;/div&gt;&lt;div style="flex:1"&gt;&lt;div class="lift-name" style="text-decoration:line-through;color:var(--t2)"&gt;Morning — upper push&lt;/div&gt;&lt;div class="lift-sets"&gt;Bench 4×8 · OHP 3×10 · Flies 3×12&lt;/div&gt;&lt;/div&gt;&lt;span class="tag tg"&gt;Done&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="lift-row"&gt;&lt;div class="lift-num"&gt;2&lt;/div&gt;&lt;div style="flex:1"&gt;&lt;div class="lift-name" style="text-decoration:line-through;color:var(--t2)"&gt;Late morning — back &amp; bis&lt;/div&gt;&lt;div class="lift-sets"&gt;Deadlift 4×6 · Rows 3×10 · Curls 3×12&lt;/div&gt;&lt;/div&gt;&lt;span class="tag tg"&gt;Done&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="lift-row"&gt;&lt;div class="lift-num"&gt;3&lt;/div&gt;&lt;div style="flex:1"&gt;&lt;div class="lift-name"&gt;Afternoon — lower body&lt;/div&gt;&lt;div class="lift-sets"&gt;Squat 4×6 · RDL 3×10 · Leg press 3×12&lt;/div&gt;&lt;/div&gt;&lt;span class="tag ta"&gt;Up next&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="lift-row"&gt;&lt;div class="lift-num"&gt;4&lt;/div&gt;&lt;div style="flex:1"&gt;&lt;div class="lift-name"&gt;Evening — accessories&lt;/div&gt;&lt;div class="lift-sets"&gt;Core · Arms · Mobility&lt;/div&gt;&lt;/div&gt;&lt;span class="tag ta"&gt;Pending&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sh"&gt;PRs&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Bench press&lt;/span&gt;&lt;div style="display:flex;gap:8px;align-items:center"&gt;&lt;span style="font-weight:500"&gt;225 lb&lt;/span&gt;&lt;span style="font-size:10px;color:var(--t3)"&gt;3 days ago&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Squat&lt;/span&gt;&lt;div style="display:flex;gap:8px;align-items:center"&gt;&lt;span style="font-weight:500"&gt;315 lb&lt;/span&gt;&lt;span style="font-size:10px;color:var(--t3)"&gt;1 week ago&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="row"&gt;&lt;span class="rl"&gt;Deadlift&lt;/span&gt;&lt;div style="display:flex;gap:8px;align-items:center"&gt;&lt;span style="font-weight:500"&gt;365 lb&lt;/span&gt;&lt;span style="font-size:10px;color:var(--t3)"&gt;2 weeks ago&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="sub-journal" style="display:none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sh"&gt;Today&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;&lt;textarea style="width:100%;font-size:14px;border:none;outline:none;resize:none;background:transparent;color:var(--t1);font-family:inherit;line-height:1.7;min-height:120px" placeholder="What's on your mind? Wins, thoughts, intentions..."&gt;&lt;/textarea&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sh"&gt;Recent&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;&lt;div style="font-size:11px;color:var(--t2);margin-bottom:4px"&gt;May 6&lt;/div&gt;&lt;div style="font-size:13px;line-height:1.5;color:var(--t1)"&gt;Great lift, recovery felt strong. Need to follow up on manufacturing quotes...&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;&lt;div style="font-size:11px;color:var(--t2);margin-bottom:4px"&gt;May 5&lt;/div&gt;&lt;div style="font-size:13px;line-height:1.5;color:var(--t1)"&gt;First week at the new job. Lot to absorb but feeling confident...&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="sub-venture" style="display:none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Prototype&lt;/div&gt;&lt;div class="kv" style="font-size:16px"&gt;$1,800&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;Per unit&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Sell price&lt;/div&gt;&lt;div class="kv" style="font-size:16px"&gt;$3,000&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;Target&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sh"&gt;Go-to-market&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="margin-bottom:12px"&gt;&lt;div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"&gt;&lt;span style="font-weight:500"&gt;Manufacturing partner&lt;/span&gt;&lt;span style="color:var(--t2)"&gt;40%&lt;/span&gt;&lt;/div&gt;&lt;div style="font-size:11px;color:var(--t2);margin-bottom:4px"&gt;3 of 5 vendors contacted&lt;/div&gt;&lt;div class="pbar"&gt;&lt;div class="pfill" style="width:40%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="margin-bottom:12px"&gt;&lt;div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"&gt;&lt;span style="font-weight:500"&gt;Demo video&lt;/span&gt;&lt;span style="color:var(--t2)"&gt;15%&lt;/span&gt;&lt;/div&gt;&lt;div style="font-size:11px;color:var(--t2);margin-bottom:4px"&gt;Script drafted&lt;/div&gt;&lt;div class="pbar"&gt;&lt;div class="pfill" style="width:15%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="margin-bottom:12px"&gt;&lt;div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"&gt;&lt;span style="font-weight:500"&gt;Website &amp; sell sheet&lt;/span&gt;&lt;span style="color:var(--t2)"&gt;30%&lt;/span&gt;&lt;/div&gt;&lt;div class="pbar"&gt;&lt;div class="pfill" style="width:30%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;&lt;div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"&gt;&lt;span style="font-weight:500"&gt;Lead pipeline&lt;/span&gt;&lt;span style="color:var(--t2)"&gt;10%&lt;/span&gt;&lt;/div&gt;&lt;div class="pbar"&gt;&lt;div class="pfill" style="width:10%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="sub-career" style="display:none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="kpi2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Day at job&lt;/div&gt;&lt;div class="kv"&gt;12&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;Started Apr 25&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="kpi"&gt;&lt;div class="kl"&gt;Goals hit&lt;/div&gt;&lt;div class="kv"&gt;2/5&lt;/div&gt;&lt;div class="ks" style="color:var(--t2)"&gt;This month&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sh"&gt;Wins&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="row"&gt;&lt;span&gt;Finished onboarding early&lt;/span&gt;&lt;i class="ti ti-star" style="color:#BA7517;font-size:16px" aria-hidden="true"&gt;&lt;/i&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="row"&gt;&lt;span&gt;Proposed new lead gen process&lt;/span&gt;&lt;i class="ti ti-star" style="color:#BA7517;font-size:16px" aria-hidden="true"&gt;&lt;/i&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="row"&gt;&lt;span&gt;Closed first intro call solo&lt;/span&gt;&lt;i class="ti ti-star" style="color:#BA7517;font-size:16px" aria-hidden="true"&gt;&lt;/i&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="height:16px"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="chat-bar" style="display:none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input id="chat-in" placeholder="Ask your agent anything..." onkeydown="if(event.key==='Enter')sendMsg()"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="send-btn" onclick="sendMsg()" aria-label="Send"&gt;&lt;i class="ti ti-send" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="navbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab on" onclick="go('dash',this)"&gt;&lt;i class="ti ti-layout-dashboard" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab" onclick="go('agent',this)"&gt;&lt;i class="ti ti-robot" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Agent&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab" onclick="go('finance',this)"&gt;&lt;i class="ti ti-wallet" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Finance&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab" onclick="go('health',this)"&gt;&lt;i class="ti ti-activity" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Health&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab" onclick="go('more',this)"&gt;&lt;i class="ti ti-dots" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;More&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">const XRP_HELD = 2500, XRP_BASIS = 1250;</p>
+<p class="p2"><br></p>
+<p class="p1">function go(id, el) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.tab').forEach(t=&gt;t.classList.remove('on'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>el.classList.add('on');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.pg').forEach(p=&gt;p.classList.remove('show'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('pg-'+id).classList.add('show');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('chat-bar').style.display = id==='agent' ? 'flex' : 'none';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('scroll').style.paddingBottom = id==='agent' ? '0' : '16px';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(id==='agent') document.getElementById('chat-in').focus();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('scroll').scrollTop = 0;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function showSub(id) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>['fitness','journal','venture','career'].forEach(s=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('sub-'+s).style.display = s===id ? 'block' : 'none';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">async function fetchXRP() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const r = await fetch('https://api.coinbase.com/v2/prices/XRP-USD/spot');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const d = await r.json();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const p = parseFloat(d.data.amount);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const val = p * XRP_HELD;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const ret = val - XRP_BASIS;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pct = ((ret/XRP_BASIS)*100).toFixed(1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const up = ret &gt;= 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const fmt = n =&gt; '$'+Math.abs(Math.round(n)).toLocaleString();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('xrp-price').textContent = '$'+p.toFixed(4);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('xrp-val').textContent = fmt(val);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('xrp-val').className = 'xsv '+(up?'up':'dn');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('xrp-ret').textContent = (up?'+':'-')+fmt(ret);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('xrp-ret').className = 'xsv '+(up?'up':'dn');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('xrp-pct').textContent = (up?'+':'')+pct+'%';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('xrp-pct').className = 'xsv '+(up?'up':'dn');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('xrp-chg').textContent = (up?'+':'')+pct+'%';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('xrp-chg').className = 'chg '+(up?'chg-u':'chg-d');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('dash-xrp').textContent = fmt(val);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('dash-xrp-s').textContent = (up?'+':'')+pct+'% all-time';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('dash-xrp-s').className = 'ks '+(up?'up':'dn');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pts = [0.48,0.51,0.50,0.55,0.58,0.54,p];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const mx = Math.max(...pts);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('spark').innerHTML = pts.map((v,i)=&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>`&lt;div class="sb${i===pts.length-1?' pk':''}" style="height:${Math.round((v/mx)*100)}%"&gt;&lt;/div&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">    </span>).join('');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} catch(e) { console.log('XRP fetch error',e); }</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">const SYS = `You are Cade's personal AI chief of staff. Be direct and concise — like a sharp friend who knows him well.</p>
+<p class="p1">His data:</p>
+<p class="p1">- Health: WHOOP recovery 82%, HRV 68ms, sleep 7.4h last night, 9,840 avg daily steps</p>
+<p class="p1">- Finance: Net worth $24,200. First Bank checking $6,340. Chase savings $12,150 at 4.5% APY. XRP: 2,500 coins, avg cost $0.50, basis $1,250</p>
+<p class="p1">- Fitness: 4 lifting sessions/day. PRs — bench 225lb, squat 315lb, deadlift 365lb</p>
+<p class="p1">- Venture: Plum Jack by Unwired LLC — patented light pole installation device. Prototype $1,800, target mfg $400-800, sell price $3,000. 3 of 5 vendors contacted.</p>
+<p class="p1">- Career: Day 12 at new job (marketing &amp; sales lead). Started April 25.</p>
+<p class="p1">- Just graduated. Building everything from scratch. Sharp, ambitious.</p>
+<p class="p1">Answer using his real data. No fluff.`;</p>
+<p class="p2"><br></p>
+<p class="p1">let history = [];</p>
+<p class="p2"><br></p>
+<p class="p1">async function sendMsg() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const inp = document.getElementById('chat-in');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const txt = inp.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!txt) return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>inp.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const msgs = document.getElementById('chat-msgs');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const t = ()=&gt;new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>msgs.innerHTML += `&lt;div class="msg u"&gt;&lt;div class="bubble"&gt;${txt}&lt;/div&gt;&lt;div class="msg-t"&gt;${t()}&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>msgs.innerHTML += `&lt;div class="msg b" id="typ"&gt;&lt;div class="dots"&gt;&lt;div class="dot"&gt;&lt;/div&gt;&lt;div class="dot"&gt;&lt;/div&gt;&lt;div class="dot"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>msgs.scrollTop = msgs.scrollHeight;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>history.push({role:'user',content:txt});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const res = await fetch('https://api.anthropic.com/v1/messages',{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>method:'POST',headers:{'Content-Type':'application/json'},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:history})</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const data = await res.json();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const reply = data.content?.find(b=&gt;b.type==='text')?.text || 'Something went wrong.';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>history.push({role:'assistant',content:reply});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('typ')?.remove();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>msgs.innerHTML += `&lt;div class="msg b"&gt;&lt;div class="bubble"&gt;${reply.replace(/\n/g,'&lt;br&gt;')}&lt;/div&gt;&lt;div class="msg-t"&gt;${t()}&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>msgs.scrollTop = msgs.scrollHeight;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} catch(e) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('typ')?.remove();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>msgs.innerHTML += `&lt;div class="msg b"&gt;&lt;div class="bubble" style="color:var(--r)"&gt;Couldn't reach agent.&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">document.getElementById('tb-date').textContent = new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});</p>
+<p class="p1">fetchXRP();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
